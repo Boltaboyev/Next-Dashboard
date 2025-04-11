@@ -24,11 +24,12 @@ import {useRouter} from "next/navigation"
 const Dashboard = () => {
     const router = useRouter()
 
-    const user = localStorage.getItem("user")
-    if (!user) {
-        router.back()
-        return
-    }
+    useEffect(() => {
+        const user = localStorage.getItem("user")
+        if (!user) {
+            router.back()
+        }
+    }, [])
 
     const {
         token: {colorBgContainer, borderRadiusLG},
